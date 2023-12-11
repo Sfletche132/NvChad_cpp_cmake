@@ -267,6 +267,7 @@ end
 -- local warn = "#DE935F"
 
 M.ui = {
+  theme = "catppuccin",
   statusline = {
     theme = "default", -- default/vscode/vscode_colored/minimal
     overriden_modules = function(modules)

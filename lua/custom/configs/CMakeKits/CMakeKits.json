@@ -1,0 +1,23 @@
+[
+    {
+      "name": "mingw64 gcc",
+      "generator": "Ninja",
+      "compilers": {
+        "C": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+        "CXX": "C:\\msys64\\mingw64\\bin\\g++.exe",
+        "Fortran": "C:\\msys64\\mingw64\\bin\\gfortran"
+      },
+      "linker": "C:\\msys64\\mingw64\\bin\\lld"
+    },
+    {
+      "name": "clang",
+      "generator": "Ninja",
+      "compilers": {
+        "C": "C:\\Program Files\\LLVM\\bin\\gcc.exe",
+        "CXX": "C:\\Program Files\\LLVM\\bin\\gcc.exe"
+      },
+       "linker": "C:\\msys64\\mingw64\\bin\\lld"
+    }
+  ]
+
+  
