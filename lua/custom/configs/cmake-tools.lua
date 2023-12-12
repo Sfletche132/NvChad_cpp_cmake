@@ -6,8 +6,8 @@ require("cmake-tools").setup {
   cmake_soft_link_compile_commands = true, -- if softlink compile commands json file
   -- cmake_compile_commands_from_lsp = true,
   cmake_build_options = { "-j32" },
-
-  cmake_kits_path = nil,
+  
+  cmake_kits_path = tostring(path:new("CMakeKits","CMakeKits.json")), --nearly there, need to reference it to location of this file
 
   cmake_executor = { -- executor to use
     name = "quickfix", -- name of the executor
