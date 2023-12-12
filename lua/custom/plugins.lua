@@ -656,6 +656,9 @@ local plugins = {
     config = function()
       require("inc_rename").setup()
     end,
+  },
+  {
+    "jamestthompson3/nvim-remote-containers"
   }
 }
 return plugins
