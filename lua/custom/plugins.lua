@@ -648,6 +648,8 @@ local plugins = {
         "clang-format",
         "codelldb",
         "cpplint",
+        "markdownlint",
+        "codespell"
       },
     },
   },
