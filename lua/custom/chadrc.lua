@@ -267,7 +267,7 @@ end
 -- local warn = "#DE935F"
 
 M.ui = {
-  theme = "bearded-arc",
+  theme = "doomchad",
   statusline = {
     theme = "default", -- default/vscode/vscode_colored/minimal
     overriden_modules = function(modules)

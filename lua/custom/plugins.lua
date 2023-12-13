@@ -658,7 +658,8 @@ local plugins = {
     end,
   },
   {
-    "jamestthompson3/nvim-remote-containers"
+    'https://codeberg.org/esensar/nvim-dev-container',
+    dependencies = 'nvim-treesitter/nvim-treesitter'
   }
 }
 return plugins
