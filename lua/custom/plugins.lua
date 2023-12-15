@@ -141,7 +141,7 @@ local plugins = {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "clangd", "cmake", "pylsp" },
+        ensure_installed = { "lua_ls", "clangd", "cmake", "pylsp"},
       }
     end,
     lazy = false,
@@ -201,7 +201,7 @@ local plugins = {
         types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
         plugins = true, -- installed opt or start plugins in packpath
         -- you can also specify the list of plugins to make available as a workspace library
-        -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+        plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
       },
     },
     lazy = false,
@@ -242,7 +242,7 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { "cpp", "c", "cmake", "glsl", "markdown", "markdown_inline", "python" },
+      ensure_installed = { "cpp", "c", "cmake", "glsl", "markdown", "markdown_inline", "python", "json" ,"jsonc"},
     },
   },
   {
@@ -487,7 +487,32 @@ local plugins = {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      -- add any options here
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            any = {
+              { find = "%d+L, %d+B" },
+              { find = "; after #%d+" },
+              { find = "; before #%d+" },
+            },
+          },
+          view = "mini",
+        },
+      },
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = true,
+      },
     },
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     config = function()
@@ -649,7 +674,7 @@ local plugins = {
         "codelldb",
         "cpplint",
         "markdownlint",
-        "codespell"
+        "codespell",
       },
     },
   },
@@ -660,8 +685,17 @@ local plugins = {
     end,
   },
   {
-    'https://codeberg.org/esensar/nvim-dev-container',
-    dependencies = 'nvim-treesitter/nvim-treesitter'
-  }
+    "jamestthompson3/nvim-remote-containers"
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    build = false,
+    cmd = "Spectre",
+    opts = { open_cmd = "noswapfile vnew" },
+    -- stylua: ignore
+    keys = {
+      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+    },
+  },
 }
 return plugins

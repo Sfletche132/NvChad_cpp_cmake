@@ -267,7 +267,7 @@ end
 -- local warn = "#DE935F"
 
 M.ui = {
-  theme = "doomchad",
+  theme = "catppuccin",
   statusline = {
     theme = "default", -- default/vscode/vscode_colored/minimal
     overriden_modules = function(modules)
@@ -317,6 +317,8 @@ M.ui = {
         -- .. "   <" ..  arg .. ">"
         return str --cmake.get_build_type()
       end)()
+     --local devcontainer = require "nvim-remote-containers"
+     --modules[6] = %#Container#%{devcontainer.currentContainer()}
     end,
   },
 }
