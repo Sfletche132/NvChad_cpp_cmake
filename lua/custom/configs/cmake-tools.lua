@@ -3,7 +3,7 @@ local path = require "plenary.path"
 require("cmake-tools").setup {
   cmake_command = "cmake", -- this is used to specify cmake command path
   ctest_command = "ctest", -- this is used to specify ctest command path
-  cmake_build_directory = "build", -- this is used to specify generate directory for cmake
+  cmake_build_directory = tostring(path:new("build-${variant:buildType}")), -- this is used to specify generate directory for cmake
   cmake_regenerate_on_save = true, -- Saves CMakeLists.txt file only if mofified.
   cmake_soft_link_compile_commands = true, -- if softlink compile commands json file
   -- cmake_compile_commands_from_lsp = true,
