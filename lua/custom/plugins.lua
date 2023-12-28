@@ -141,7 +141,7 @@ local plugins = {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "clangd", "cmake", "pylsp"},
+        ensure_installed = { "lua_ls", "clangd", "cmake", "pylsp" },
       }
     end,
     lazy = false,
@@ -199,7 +199,6 @@ local plugins = {
         -- these settings will be used for your Neovim config directory
         runtime = true, -- runtime path
         types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-        plugins = true, -- installed opt or start plugins in packpath
         -- you can also specify the list of plugins to make available as a workspace library
         plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
       },
@@ -238,13 +237,13 @@ local plugins = {
     end,
     lazy = false,
   },
-  { 
-    "nvim-telescope/telescope-ui-select.nvim" 
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
   },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { "cpp", "c", "cmake", "glsl", "markdown", "markdown_inline", "python", "json" ,"jsonc"},
+      ensure_installed = { "cpp", "c", "cmake", "glsl", "markdown", "markdown_inline", "python", "json", "jsonc" },
     },
   },
   {
@@ -569,7 +568,7 @@ local plugins = {
   },
   {
     "L3MON4D3/LuaSnip",
-    dependencies = { "rafamadriz/friendly-snippets" },
+    dependencies = { "rafamadriz/friendly-snippets", "honza/vim-snippets" },
   },
   {
     "natecraddock/workspaces.nvim",
@@ -578,7 +577,7 @@ local plugins = {
       require("workspaces").setup {}
       require("telescope").load_extension "workspaces"
     end,
-  }, 
+  },
   {
     "nvim-treesitter/nvim-treesitter-context",
     lazy = false,
@@ -671,7 +670,7 @@ local plugins = {
     opts = {
       ensure_installed = {
         "clang-tidy",
-        "cmake-language-server",
+        "neocmakelsp",
         "clangd",
         "clang-format",
         "codelldb",
@@ -688,30 +687,20 @@ local plugins = {
     end,
   },
   {
-    "arnaupv/nvim-devcontainer-cli",
-    opts = {
-      -- By default, if no extra config is added, following nvim_dotfiles are
-      -- installed: "https://github.com/LazyVim/starter"
-      -- This is an example for configuring other nvim_dotfiles inside the docker container
-      nvim_dotfiles_repo = "https://github.com/arnaupv/dotfiles.git",
-      nvim_dotfiles_install_command = "cd ~/dotfiles/ && ./install.sh",
-      -- In case you want to change the way the devenvironment is setup, you can also provide your own setup
-      setup_environment_repo = "https://github.com/arnaupv/setup-environment",
-      setup_environment_install_command = "./install.sh -p 'nvim stow zsh'",
-    },
+    "jamestthompson3/nvim-remote-containers",
     keys = {
       -- stylua: ignore
       {
-        "<leader>cdu",
-        ":DevcontainerUp<cr>",
-        desc = "Up the DevContainer",
+        "<leader>cds",
+        "StartImage:<cr>",
+        desc = "Start dev container image",
       },
       {
-        "<leader>cdc",
-        ":DevcontainerConnect<cr>",
-        desc = "Connect to DevContainer",
+        "<leader>cdi",
+        ":BuildImage true<cr>",
+        desc = "Build the docker image",
       },
-    }
+    },
   },
   {
     "nvim-pack/nvim-spectre",

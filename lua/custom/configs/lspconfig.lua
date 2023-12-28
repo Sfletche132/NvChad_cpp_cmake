@@ -1,4 +1,4 @@
---local on_attach = require("plugins.configs.lspconfig").on_attach
+local on_attach = require("plugins.configs.lspconfig").on_attach
 --local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local setup = {
@@ -61,7 +61,29 @@ require("lspconfig").lua_ls.setup {
     },
   },
 }
-require("lspconfig").cmake.setup {}
+
+local configs = require "lspconfig.configs"
+local nvim_lsp = require "lspconfig"
+if not configs.neocmake then
+  configs.neocmake = {
+    default_config = {
+      cmd = { "neocmakelsp", "--stdio" },
+      filetypes = { "cmake" },
+      root_dir = function(fname)
+        return nvim_lsp.util.find_git_ancestor(fname)
+      end,
+      single_file_support = true, -- suggested
+      on_attach = on_attach,
+      init_options = {
+        format = {
+          enable = true,
+        },
+        scan_cmake_in_package = true, -- default is true
+      },
+    },
+  }
+  nvim_lsp.neocmake.setup {}
+end
 require("lspconfig").asm_lsp.setup {}
 require("lspconfig").pylsp.setup {}
 -- require("lspconfig").taplo.setup {}
